@@ -1,6 +1,6 @@
 //Импортируем все нужные файлы
 
-import { createCard, deleteCard, CardLikeButton } from "./card.js";
+import { createCard, deleteCard, handleCardLikeButton } from "./card.js";
 import { initialCards } from "./cards.js";
 import { openPopup, closePopup } from "./modal.js";
 import "/src/pages/index.css";
@@ -18,20 +18,20 @@ const profileAddButton = profile.querySelector(".profile__add-button");
 const popupTypeEdit = document.querySelector(".popup_type_edit");
 const popupNewCard = document.querySelector(".popup_type_new-card");
 const popupCardImage = document.querySelector(".popup_type_image");
-const popupButtonClose = popupTypeEdit.querySelector(".popup__close");
+const profileCloseButton = popupTypeEdit.querySelector(".popup__close");
 const popupCloseCard = popupNewCard.querySelector(".popup__close");
 const popupImage = popupCardImage.querySelector(".popup__image");
 const popupImageCaption = popupCardImage.querySelector(".popup__caption");
 const popupCloseImage = popupCardImage.querySelector(".popup__close");
 const popupsArray = [popupTypeEdit, popupNewCard, popupCardImage];
 
-const editProfile = document.forms["edit-profile"];
-const inputName = editProfile.querySelector(".popup__input_type_name");
-const inputDescription = editProfile.querySelector(".popup__input_type_description");
+const editProfileForm = document.forms["edit-profile"];
+const inputName = editProfileForm.querySelector(".popup__input_type_name");
+const inputDescription = editProfileForm.querySelector(".popup__input_type_description");
 
-const popupNewPlace = document.forms["new-place"];
-const inputTypeCardName = popupNewPlace.querySelector(".popup__input_type_card-name");
-const inputTypeUrl = popupNewPlace.querySelector(".popup__input_type_url");
+const newPlaceForm = document.forms["new-place"];
+const inputTypeCardName = newPlaceForm.querySelector(".popup__input_type_card-name");
+const inputTypeUrl = newPlaceForm.querySelector(".popup__input_type_url");
 
 //Функция чтения полей
 
@@ -42,8 +42,8 @@ function submitEditProfileForm(evt) {
   closePopup(popupTypeEdit);
 }
 
-editProfile.addEventListener("submit", submitEditProfileForm);
-popupNewPlace.addEventListener("submit", NewCardSubmit);
+editProfileForm.addEventListener("submit", submitEditProfileForm);
+newPlaceForm.addEventListener("submit", handleNewCardSubmit);
 
 //Функция открытия карточки
 
@@ -56,12 +56,12 @@ function openPopupImage(evt) {
 
 //Функция добавления новой карточки
 
-function NewCardSubmit(evt) {
+function handleNewCardSubmit(evt) {
   evt.preventDefault();
   const card = {};
   card.link = inputTypeUrl.value;
   card.name = inputTypeCardName.value;
-  const newCard = createCard(card, CardLikeButton, openPopupImage, deleteCard);
+  const newCard = createCard(card, handleCardLikeButton, openPopupImage, deleteCard);
   placeCards.prepend(newCard);
   closePopup(popupNewCard);
   inputTypeCardName.value = "";
@@ -71,7 +71,7 @@ function NewCardSubmit(evt) {
 //Вывод карточки на страницу
 
 initialCards.forEach((card) => {
-  const newCard = createCard(card, CardLikeButton, openPopupImage, deleteCard);
+  const newCard = createCard(card, handleCardLikeButton, openPopupImage, deleteCard);
   placeCards.append(newCard);
 });
 
@@ -85,7 +85,7 @@ profileEditButton.addEventListener("click", () => {
 
 //Слушатели попапов
 
-popupButtonClose.addEventListener("click", () => {
+profileCloseButton.addEventListener("click", () => {
   closePopup(popupTypeEdit);
 });
 

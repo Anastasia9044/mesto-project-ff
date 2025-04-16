@@ -4,7 +4,7 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 //Функция создания карточки
 
-function createCard(initialCards, CardLikeButton, openPopupImage, deleteCard) {
+function createCard(initialCards, handleCardLikeButton, openPopupImage, deleteCard) {
   const card = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = card.querySelector(".card__image");
   const cardTitle = card.querySelector(".card__title");
@@ -18,7 +18,7 @@ function createCard(initialCards, CardLikeButton, openPopupImage, deleteCard) {
   buttonDelete.addEventListener("click", function () {
     deleteCard(buttonDelete);
   });
-  cardLikeButton.addEventListener("click", CardLikeButton);
+  cardLikeButton.addEventListener("click", handleCardLikeButton);
   cardImage.addEventListener("click", (evt) => {
     openPopupImage(evt);
   });
@@ -34,10 +34,10 @@ function deleteCard(buttonDelete) {
 
 //Функция лайка карточки
 
-function CardLikeButton(evt) {
+function handleCardLikeButton(evt) {
   evt.target.classList.toggle("card__like-button_is-active");
 }
 
 //Экспортируем все функции в index.js
 
-export { createCard, deleteCard, CardLikeButton };
+export { createCard, deleteCard, handleCardLikeButton };
