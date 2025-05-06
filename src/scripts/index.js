@@ -73,12 +73,12 @@ function submitEditProfileForm(evt) {
     .then((res) => {
       profileTitle.textContent = res.name;
       profileDescription.textContent = res.about;
+      closePopup(popupTypeEdit);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closePopup(popupTypeEdit);
       button.textContent = "Сохранить";
       button.disabled = false;
     });
@@ -105,12 +105,12 @@ function handleNewCardSubmit(evt) {
         userId
       );
       placeCards.prepend(newCard);
+      closePopup(popupNewCard);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closePopup(popupNewCard);
       button.textContent = "Сохранить";
       button.disabled = false;
     });
@@ -127,12 +127,12 @@ function submitChangeAvatar(evt) {
   apiUpdateUserAvatar(changeAvatar)
     .then((res) => {
       profileImage.style.backgroundImage = `url(${res.avatar})`;
+      closePopup(popupChangeAvatar);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closePopup(popupChangeAvatar);
       button.textContent = "Сохранить";
       button.disabled = false;
     });

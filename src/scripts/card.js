@@ -20,13 +20,10 @@ function createCard(initialCards, handleCardLikeButton, openPopupImage, deleteCa
   cardLikeCount.textContent = initialCards.likes.length;
 
   checkActiveLike(initialCards, cardLikeButton, userId);
-
-  //buttonDelete.addEventListener("click", function () {
-   // deleteCard(buttonDelete);
-  //});
   cardLikeButton.addEventListener('click', () => {
     handleCardLikeButton(cardLikeButton, cardLikeCount, initialCards, userId);
   });
+
   cardImage.addEventListener("click", (evt) => {
     openPopupImage(evt);
   });
@@ -38,6 +35,7 @@ function createCard(initialCards, handleCardLikeButton, openPopupImage, deleteCa
     })
 } else {
   buttonDelete.classList.add('card__delete-button_inactive');
+  buttonDelete.style.display = 'none';
 }
   return card;
 }
