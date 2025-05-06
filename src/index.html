@@ -20,8 +20,7 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <div
-            class="profile__image">
+          <div class="profile__image">
             <div class="profile__image-edit"></div>
           </div>
           <div class="profile__info">
@@ -49,10 +48,10 @@
               id="name-input"
               class="popup__input popup__input_type_name"
               placeholder="Имя"
-              minlength="2" 
-              maxlength="40" 
-              pattern="^[a-zA-Zа-яёА-ЯЁ\-\s]+$" 
-              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" 
+              minlength="2"
+              maxlength="40"
+              pattern="^[a-zA-Zа-яёА-ЯЁ\-\s]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
             <span class="name-input-error"></span>
@@ -62,9 +61,9 @@
               id="description-input"
               class="popup__input popup__input_type_description"
               placeholder="Занятие"
-              minlength="2" 
-              maxlength="200" 
-              pattern="^[a-zA-Zа-яёА-ЯЁ\-\s]+$" 
+              minlength="2"
+              maxlength="200"
+              pattern="^[a-zA-Zа-яёА-ЯЁ\-\s]+$"
               data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
@@ -86,9 +85,9 @@
               id="place-name-input"
               class="popup__input popup__input_type_card-name"
               placeholder="Название"
-              minlength="2" 
-              maxlength="30" 
-              pattern="^[a-zA-Zа-яЁА-Яё\-\s]+$" 
+              minlength="2"
+              maxlength="30"
+              pattern="^[a-zA-Zа-яЁА-Яё\-\s]+$"
               data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
@@ -121,7 +120,14 @@
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Обновить аватар</h3>
         <form class="popup__form" name="new-avatar" novalidate>
-          <input type="url" id="url-input" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на аватар" required>
+          <input
+            type="url"
+            id="url-input"
+            name="link"
+            class="popup__input popup__input_type_url"
+            placeholder="Ссылка на аватар"
+            required
+          />
           <span class="url-input-error"></span>
           <button type="submit" class="button popup__button">Сохранить</button>
         </form>
@@ -134,8 +140,8 @@
         <div class="card__description">
           <h2 class="card__title"></h2>
           <div class="card__like">
-          <button type="button" class="card__like-button"></button>
-          <span class="card__like-count">0</span>
+            <button type="button" class="card__like-button"></button>
+            <span class="card__like-count">0</span>
           </div>
         </div>
       </li>
